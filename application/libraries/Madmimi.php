@@ -182,7 +182,6 @@ class MadMimi {
 		} else {
 			$request = $this->DoRequest('/mailer', $options, $return, 'POST', true);
 		}
-		echo $request;
 		return $request;
 		
 	}
