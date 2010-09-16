@@ -32,18 +32,24 @@
 if (!function_exists('curl_init')) {
   die('Mad Mimi for PHP requires the PHP cURL extension.');
 }
+
 class MadMimi {
 	function __construct() {
 		
 		$this->ci =& get_instance();
-		
-		$this->ci->load->config('madmimi', TRUE);
+
+		$this->ci->load->config('madmimi');
 		
 		$this->ci->load->library('spyc');
 		
 		$this->username = $this->ci->config->item('madmimi_email');
 		$this->api_key = $this->ci->config->item('madmimi_api');
 		$this->debug = $this->ci->config->item('madmimi_debug');
+		
+		//$this->username = 'brett@digitalwaxworks.com';
+		//$this->api_key ='7432373827dc1d12b91c46fa0ab71234';
+		//$this->debug = FALSE;
+		
 	}
 	function default_options() {
 		return array('username' => $this->username, 'api_key' => $this->api_key);
@@ -180,7 +186,9 @@ class MadMimi {
 		} else {
 			$request = $this->DoRequest('/mailer', $options, $return, 'POST', true);
 		}
+		echo $request;
 		return $request;
+		
 	}
 	function SuppressedSince($unix_timestamp, $return = false) {
 		$request = $this->DoRequest('/audience_members/suppressed_since/' . $unix_timestamp . '.txt', $this->default_options(), $return);
