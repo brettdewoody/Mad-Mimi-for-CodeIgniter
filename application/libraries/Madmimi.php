@@ -46,10 +46,6 @@ class MadMimi {
 		$this->api_key = $this->ci->config->item('madmimi_api');
 		$this->debug = $this->ci->config->item('madmimi_debug');
 		
-		//$this->username = 'brett@digitalwaxworks.com';
-		//$this->api_key ='7432373827dc1d12b91c46fa0ab71234';
-		//$this->debug = FALSE;
-		
 	}
 	function default_options() {
 		return array('username' => $this->username, 'api_key' => $this->api_key);
