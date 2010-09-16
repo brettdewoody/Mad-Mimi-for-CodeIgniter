@@ -1,0 +1,37 @@
+Mad Mimi for CodeIgniter integrates Mad Mimi for PHP (http://github.com/madmimi/madmimi-php) into CodeIgniter.
+
+It is based on the excellent Mad Mimi for PHP authored by Nicholas Young nicholas@madmimi.com.
+
+
+** Installation **
+
+Simply download the source code (3 files) and upload to your CodeIgniter install. The files live in:
+
+system/application/config/madmimi.php
+system/application/libraries/Madmimi.php
+system/application/libraries/Spyc.php
+Open the /config/madmimi.php file and enter you Mad Mimi API key and the email address you used when creating your Mad Mimi account. 
+
+
+** Usage **
+
+First load the Mad Mimi library:
+
+$this→load→library(‘madmimi’);
+
+Then call the Mad Mimi API methods like this:
+
+$this→madmimi→MethodName($parameter1, $parameter2, $paramater3, …);
+
+For example, to send a Plain Text email:
+
+$options = array(
+   ‘promotion_name’ => ‘Test Email’, 
+   ‘recipients’ => ‘someone@somewhere.com’, 
+   ‘subject’ => ‘Testing the Mailer API’, 
+   ‘from’ => ‘Your Name <you@yoursite.com>’
+ );
+
+$plaintext = ‘Here\’s our plain text email!’;
+
+$this→madmimi→SendPlainText($options, $plaintext);
